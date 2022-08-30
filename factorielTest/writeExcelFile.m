@@ -1,0 +1,1 @@
+writetable(table(run(factorielTest)),'factorialExcel.xlsx')
