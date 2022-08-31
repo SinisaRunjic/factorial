@@ -77,6 +77,11 @@ function testFactorielMatrix(testCase)
     verifyEqual(testCase,actualSolution,expectedSolution)
 end
 
+function testComplexNumbers(testCase)
+    testVariable = 3+8*i;
+    verifyError(testCase,@() factoriel(testVariable),?MException)
+end
+
 %% Optional file fixtures 
 % this function stars onlz once before calling first test function
 function setupOnce(testCase)  % do not change function name

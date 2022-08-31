@@ -6,6 +6,7 @@ classdef FactorielClassTest < matlab.unittest.TestCase
         negativeNumbers=struct('nn1',-1,'nn2',-2,'nn55',-55,'nn333',-333);
         nonIntegerNumbers = struct('piNumber',pi,'n5p5',5.5,'n4p3', 4.3);
         VectorAndMatrix = {[1;2;3], [1 2; 3 4], [1 2 3];}
+        complexNumbers = {{1 + i},{1 + 3*i} {-21 - 3*i}};
     end
     methods(TestClassSetup) %% runs when test class is about to close
         function setupOnce(testCase)
@@ -39,6 +40,9 @@ classdef FactorielClassTest < matlab.unittest.TestCase
         end
         function testVectorAndMatrixNumbers(testCase,VectorAndMatrix)
             verifyError(testCase,@() factoriel(VectorAndMatrix),?MException)
+        end
+         function testComplexNumbers(testCase,complexNumbers)
+            verifyError(testCase,@() factoriel(complexNumbers),?MException)
         end
     end
 end

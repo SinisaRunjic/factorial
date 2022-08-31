@@ -4,6 +4,7 @@ function result = factoriel( number )
  assert(isnumeric(number) && ~iscell(number), 'Variable that you provide isn''t numeric')
  assert(round(number) == number, 'Please provide integer')
  assert(number >= 0, 'Can''t do factoriel of negative numbers')
+ assert(imag(number) == 0, 'Can''t do factorial of complex numbers')
  result = fact(number);
 end
 
