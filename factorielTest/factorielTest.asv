@@ -7,15 +7,15 @@ end
 function testFactorielPositiveNumbers(testCase)
     testNumber = 5;
     actualSolution = factoriel(testNumber);
-    expectedSolution = factorial(5);  %% matlab function
-    verifyEqual(testCase,actualSolution,expectedSolution, 'Factorial calculation is wrong')
+    expectedSolution = factorial(4);  %% matlab function
+    verifyEqual(testCase,actualSolution,expectedSolution)
 end
 
 function testFactorielZeroNumber(testCase)
     testNumber = 0;
     actualSolution = factoriel(testNumber);
     expectedSolution = factorial(0);  %% matlab function
-    verifyEqual(testCase,actualSolution,expectedSolution, 'Factorial of 0 is one')
+    verifyEqual(testCase,actualSolution,expectedSolution)
 end
 
 
@@ -33,12 +33,31 @@ end
 
 function testFactorielNonIntegerNumbers(testCase)
     testVariable = 5.5;
-    verifyError(testCase,@() factoriel(testVariable),?MException)
+    expectedSolution = false;
+    try
+        nonIntegerFactorial = factoriel(testVariable);
+        actualSolution = true;
+    catch
+        actualSolution = false;
+    end
+    verifyEqual(testCase,actualSolution,expectedSolution)
 end
 
+% function testFactorielString(testCase)
+%     testVariable = '2';
+%     expectedSolution = false;
+%     try
+%         stringFactorial = factoriel(testVariable);
+%         actualSolution = true;
+%     catch
+%         actualSolution = false;
+%     end
+%     verifyEqual(testCase,actualSolution,expectedSolution)
+% end
+
 function testFactorielString(testCase)
-    testVariable = '4';
-    verifyError(testCase,@() factoriel(testVariable),?MException)
+    testVariable = '2';
+    verifyError(testCase,@() factoriel(testVariable),?MException, 'Can''t do factirial of string')
 end
 
 function testFactorielCell(testCase)
